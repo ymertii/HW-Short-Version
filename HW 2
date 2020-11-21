@@ -1,0 +1,25 @@
+from random import randint
+
+def main():
+
+    num_scores= int(input("Number of scores"))
+    scores=[]
+    for i in range(num_scores):
+        scores.append(randint(1, 30))
+
+    print(scores)
+    new_scores = remove_lowest(scores)
+    print(new_scores)
+    average = compute_average(scores)
+    print(f"Original scores: {sum(scores)}, removing lowest: {sum(new_scores)}, average: {average}")
+
+def remove_lowest(scores):
+    scores.sort(reverse = True)
+    scores.pop(-1)
+    return scores
+
+def compute_average(scores):
+    return sum(scores)/len(scores)
+
+if __name__=='__main__':
+    main()
