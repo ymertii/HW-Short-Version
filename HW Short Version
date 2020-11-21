@@ -6,11 +6,11 @@ def main():
     scores = sample(range(1,30), num_scores)
 
     print(scores)
-    scores = remove_lowest(scores)
-    print(scores)
-    avarage = sum(scores)/len(scores)
+    new_scores = remove_lowest(scores)
+    print(new_scores)
+    average = sum(scores)/len(scores)
 
-    print(f"Avarage is {avarage}")
+    print(f"Original scores: {sum(scores)}, removing lowest: {sum(new_scores)}, average: {average}")
 
 def remove_lowest(scores):
      scores.sort()
