@@ -1,0 +1,21 @@
+from random import sample
+
+def main():
+
+    num_scores = int(input("Number of scores"))
+    scores = sample(range(1,30), num_scores)
+
+    print(scores)
+    scores = remove_lowest(scores)
+    print(scores)
+    avarage = sum(scores)/len(scores)
+
+    print(f"Avarage is {avarage}")
+
+def remove_lowest(scores):
+     scores.sort()
+     scores.pop(0)
+     return scores
+
+if __name__=='__main__':
+    main()
