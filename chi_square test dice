@@ -1,0 +1,41 @@
+NUM_VALUES = int(input("How many roll: "))
+
+from random import randint
+
+
+def main():
+    """Main entry point"""
+
+    die_values = list()
+    for i in range(NUM_VALUES):
+        die_values.append(randint(1, 6))
+
+    if check(die_values):
+        print("Dice is fair")
+    else:
+        print("Dice is *NOT* fair")
+
+
+def check(values):
+    """Check whether the dice is fair"""
+
+    # step 1: count results
+    frequency = [0, 0, 0, 0, 0, 0]
+    for r in values:
+        frequency[r-1] = frequency[r-1] + 1
+    expected_value = NUM_VALUES / 6
+    min_error = 11.07 # %5 in degree of freedoom = 5
+    chi_square = ((frequency[0] - expected_value)**2 + (frequency[1] - expected_value)**2 + (frequency[2] - expected_value)**2 + (frequency[3] - expected_value)**2 + (frequency[4] - expected_value)**2 + (frequency[5] - expected_value)**2) / expected_value
+    print(chi_square)
+    if chi_square <= min_error:
+        fair = True
+    else:
+        fair = False
+
+    return fair
+
+
+
+
+if __name__ == '__main__':
+    main()
